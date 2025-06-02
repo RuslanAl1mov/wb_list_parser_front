@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 import "./ProductCard.css";
 
 const ProductCard = ({ product }) => (
@@ -9,14 +10,20 @@ const ProductCard = ({ product }) => (
       <span className="muted">Категория: {product.category.name}</span>
       <span className="muted">Артикул: {product.articul}</span>
 
-      <a
-        className="button-link"
-        href={product.url}
-        target="_blank"
-        rel="noreferrer"
-      >
-        Открыть на сайте
-      </a>
+      <div className="buttons">
+        <a
+          className="button-link"
+          href={product.url}
+          target="_blank"
+          rel="noreferrer"
+        >
+          На Wildberries
+        </a>
+
+        <Link className="button-link secondary" to={`/products/${product.id}`}>
+          Подробнее
+        </Link>
+      </div>
     </div>
   </article>
 );

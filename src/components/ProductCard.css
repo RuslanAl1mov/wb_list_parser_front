@@ -44,3 +44,25 @@
     text-decoration: underline;
   }
   
+  .buttons {
+    margin-top: auto;
+    display: flex;
+    gap: 6px;
+  }
+  
+  .button-link.secondary {
+    background: #f3f4f6;
+    color: #111827;
+    padding: 4px 8px;
+    border-radius: 6px;
+  }
+  
+  .button-link.secondary:hover {
+    background: #e5e7eb;
+  }
+  .buttons {
+    margin-top: auto;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }

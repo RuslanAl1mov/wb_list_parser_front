@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import ProductsPage from "./pages/ProductsPage";
 import HistoryPage from "./pages/HistoryPage";
 import ParsePage from "./pages/ParsePage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 import { Toaster } from "sonner";
 
 const App = () => (
@@ -14,6 +15,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<ProductsPage />} />
           <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/:id" element={<ProductDetailPage />} />
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/parse" element={<ParsePage />} />
         </Routes>

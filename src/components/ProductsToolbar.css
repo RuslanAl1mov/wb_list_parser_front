@@ -1,0 +1,40 @@
+.products-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  .search-input {
+    flex: 1 1 220px;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .select {
+    min-width: 200px;
+    height: 110px;
+    padding: 4px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #fff;
+  }
+  
+  .reset-btn {
+    padding: 8px 14px;
+    background: #6b7280;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  
+  .reset-btn:hover {
+    background: #4b5563;
+  }
+  
