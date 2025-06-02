@@ -1,70 +1,130 @@
-# Getting Started with Create React App
+# Краткая пользовательская документация
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Содержание
 
-## Available Scripts
+* [Описание проекта](#описание-проекта)
+* [Установка и запуск](#установка-и-запуск)
+* [Структура приложения](#структура-приложения)
+* [Страницы и функционал](#страницы-и-функционал)
 
-In the project directory, you can run:
+  * [Список товаров](#список-товаров)
+  * [Фильтры и поиск](#фильтры-и-поиск)
+  * [Карточка товара](#карточка-товара)
+  * [История парсинга](#история-парсинга)
+  * [Запуск парсинга](#запуск-парсинга)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Описание проекта
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Это веб-приложение на React, представляющее собой дешборд для мониторинга и управления сервисом парсинга товаров.
 
-### `npm test`
+**Бэкенд**: Django + Django REST Framework
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Фронтенд**: React (чистый CSS)
 
-### `npm run build`
+Цель: удобный интерфейс для менеджеров и разработчиков.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Установка и запуск
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Предварительные условия
 
-### `npm run eject`
+* Node.js ≥ 18.x
+* npm / pnpm / yarn
+* Django-бэкенд ([http://127.0.0.1:8000](http://127.0.0.1:8000))
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Шаги установки
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+git clone <адрес-репозитория> 
+cd wb_list_parser_front
+npm install
+# или pnpm install / yarn install
+npm run dev
+# или pnpm run dev / yarn dev
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Проверьте `API_BASE` в файлах страниц (`src/pages/*.jsx`).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Откройте: [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+**Фото 1:** ![alt text](screenshots/img1.png)Скриншот стартовой страницы (дешборд после запуска).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Структура приложения
 
-### Code Splitting
+```
+src/
+├── components/
+│   ├── Sidebar.jsx/css
+│   ├── ProductCard.jsx/css
+│   ├── ProductsToolbar.jsx/css
+├── pages/
+│   ├── ProductsPage.jsx/css
+│   ├── ProductDetailPage.jsx/css
+│   ├── HistoryPage.jsx/css
+│   ├── ParsePage.jsx/css
+├── App.jsx
+├── index.css
+└── main.jsx
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Страницы и функционал
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Список товаров
 
-### Making a Progressive Web App
+* **Путь**: `/` или `/products`
+* **Компонент**: `ProductsPage.jsx`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Отображает грид карточек товаров.
 
-### Advanced Configuration
+**Фото 2:** ![alt text](screenshots/img1.png)Скриншот страницы «Список товаров» с гридом карточек.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Фильтры и поиск
 
-### Deployment
+* **Компонент**: `ProductsToolbar.jsx`
+* Поиск и фильтрация категорий с дебаунсом 400 мс.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**Скриншот фильтров с поиском и мультиселектом категорий:** ![alt text](<Снимок экрана 2025-06-03 в 01.15.46.png>)
 
-### `npm run build` fails to minify
+### Карточка товара
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* **Путь**: `/products/:id`
+* **Компонент**: `ProductDetailPage.jsx`
+
+Показывает детальную информацию о товаре.
+
+**Фото 4:**![alt text](<Снимок экрана 2025-06-03 в 01.18.07.png>) Скриншот карточки товара с галереей фото и таблицей параметров.
+
+### История парсинга
+
+* **Путь**: `/history`
+* **Компонент**: `HistoryPage.jsx`
+
+Отображает таблицу с историей статусов парсинга.
+
+**Фото 5:** ![alt text](image.png)Скриншот страницы с историей парсинга.
+
+### Запуск парсинга
+
+* **Путь**: `/parse`
+* **Компонент**: `ParsePage.jsx`
+
+Форма для ввода артикулов и запуска парсинга.
+
+**Фото 6:** ![alt text](image-1.png)Скриншот страницы формы запуска парсинга (до и после ввода).
+
+---
+
+## Переменные окружения и настройки
+
+По умолчанию используется:
+
+```javascript
+const API_BASE = "http://127.0.0.1:8000/api/v1/parser";
+```
